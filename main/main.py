@@ -1,6 +1,7 @@
 import PyPDF2
 import glob
 import datetime
+import time
 
 
 def mergePDF(filesArr, result_filename):
@@ -12,13 +13,13 @@ def mergePDF(filesArr, result_filename):
     for i in pdfFileObjArray:
         for j in range(i.numPages):
             pdfWriter.addPage(i.getPage(j))
-    pdfOutputFile = open("./MERGED DOCS HERE/"+result_filename, 'wb')
+    pdfOutputFile = open("../MERGED DOCS HERE/"+result_filename, 'wb')
     pdfWriter.write(pdfOutputFile)
     pdfOutputFile.close()
 
 
 if __name__ == "__main__":
-    PdfArr = glob.glob('./DROP/*.pdf')
+    PdfArr = glob.glob('../DROP/*.pdf')
     print("{} Files found!!".format(len(PdfArr)))
     x = {}
     for i in range(len(PdfArr)):
@@ -33,4 +34,6 @@ if __name__ == "__main__":
     inp = input("Enter name of Merged dopcument:").replace(" ", "-")
     result_filename = inp+".pdf"
     mergePDF(temp, result_filename)
-    print("DONE!")
+    print("DONE!..Merged Document is in \'MERGED DOCS FOLDER\'.")
+    time.sleep(10)
+    print("Goodbye..")
