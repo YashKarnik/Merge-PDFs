@@ -35,5 +35,6 @@ if __name__ == "__main__":
     result_filename = inp+".pdf"
     mergePDF(temp, result_filename)
     print("DONE!..Merged Document is in \'MERGED DOCS FOLDER\'.")
-    time.sleep(5)
+    time.sleep(1.5)
     print("Goodbye..")
+    time.sleep(2)
