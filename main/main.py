@@ -25,7 +25,11 @@ def mergePDF(filesArr, result_filename):
     for i in pdfFileObjArray:
         for j in range(i.numPages):
             pdfWriter.addPage(i.getPage(j))
-    pdfOutputFile = open("../MERGED DOCS HERE/"+result_filename, 'wb')
+    try:
+        pdfOutputFile = open("../MERGED DOCS HERE/"+result_filename, 'wb')
+    except Exception as e:
+        os.mkdir(os.getcwd()+"/../MERGED DOCS HERE")
+        pdfOutputFile = open("../MERGED DOCS HERE/"+result_filename, 'wb')
     pdfWriter.write(pdfOutputFile)
     pdfOutputFile.close()
 
