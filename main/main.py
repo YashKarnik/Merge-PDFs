@@ -1,7 +1,19 @@
-import PyPDF2
 import glob
 import datetime
 import time
+import os
+try:
+    import PyPDF2
+except Exception as e:
+    inp = input("PyPDF2 module not found!!Do you want to install it? [y/n]: ")
+    if(inp == 'y' or inp == 'Y'):
+        os.system('pip install PyPDF2')
+        print("Module Insatlled!!")
+        time.sleep(0.5)
+    else:
+        print("Goodbye...")
+        time.sleep(1)
+        exit()
 
 
 def mergePDF(filesArr, result_filename):
@@ -21,6 +33,9 @@ def mergePDF(filesArr, result_filename):
 if __name__ == "__main__":
     PdfArr = glob.glob('../DROP/*.pdf')
     print("{} Files found!!".format(len(PdfArr)))
+    if(len(PdfArr) == 0):
+        print("Please drop files in the drop Folder!!")
+        exit()
     x = {}
     for i in range(len(PdfArr)):
         x[chr(i+97)] = PdfArr[i]
