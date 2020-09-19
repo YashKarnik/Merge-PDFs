@@ -7,7 +7,7 @@
 -  Check for merged pdf in `MERGED DOCS HERE` folder
 
 ## Packages Used
-### Use `pip install <package_name>` to install packages` or Double click on `package_installer` inside 'main' foler	
+### Use `pip install <package_name>` to install packages or Double click on `package_installer` inside 'main' foder	
 - PyPDF2 
 - glob (Inbuilt with python3)
 - time (Inbuilt with python3)
