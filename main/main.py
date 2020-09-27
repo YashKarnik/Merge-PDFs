@@ -66,9 +66,9 @@ def main():
         "Enter name of Merged dopcument:").replace(" ", "-")
     temp = mergePDF(temp, GetResultantFilename(result_filename))
     print("DONE!!...{} created in MERGED DOCS FOLDER".format(temp))
-    time.sleep(1.5)
+    time.sleep(0.5)
     print("Goodbye..")
-    time.sleep(2)
+    time.sleep(0.5)
 
 
 if __name__ == "__main__":
