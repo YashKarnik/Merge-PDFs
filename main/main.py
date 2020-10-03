@@ -36,10 +36,6 @@ def mergePDF(filesArr, result_filename):
     for i in pdfFileObjArray:
         for j in range(i.numPages):
             pdfWriter.addPage(i.getPage(j))
-    try:
-        os.mkdir(os.getcwd()+"/../MERGED DOCS HERE")
-    except FileExistsError as e:
-        pass
     pdfOutputFile = open("../MERGED DOCS HERE/"+result_filename, 'wb')
     pdfWriter.write(pdfOutputFile)
     pdfOutputFile.close()
@@ -59,17 +55,28 @@ def main():
         print(i, ":", j.split("\\")[1])
     temp = []
     y = input(
-        "Enter letters of files to merge in required order(space seperated):").lower().split()
-    for i in y:
-        temp.append(x.get(i))
+        "Enter letters of files to merge in required order(space seperated)(#:select all in default order):").lower().split()
+    if(y[0]=="#"):
+        temp=PdfArr
+    else:
+        for i in y:
+            temp.append(x.get(i))
     result_filename = input(
         "Enter name of Merged dopcument:").replace(" ", "-")
     temp = mergePDF(temp, GetResultantFilename(result_filename))
     print("DONE!!...{} created in MERGED DOCS FOLDER".format(temp))
     time.sleep(0.5)
     print("Goodbye..")
-    time.sleep(0.5)
+    time.sleep(1)
 
 
 if __name__ == "__main__":
+    try:
+        os.mkdir(os.getcwd()+"/../MERGED DOCS HERE")
+    except FileExistsError as e:
+        pass
+    try:
+        os.mkdir(os.getcwd()+"/../DROP")
+    except FileExistsError as e:
+        pass
     main()
